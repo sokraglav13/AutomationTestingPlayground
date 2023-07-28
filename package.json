@@ -1,0 +1,20 @@
+{
+  "name": "automation-testing-selenium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha && nyc report --reporter=html",
+    "coverage": "nyc --reporter=html mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "selenium-webdriver": "^4.10.0"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
+  }
+}
