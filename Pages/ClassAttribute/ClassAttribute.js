@@ -3,6 +3,7 @@ const Page = require('../Page')
 const {classAttributeDict} = require('../dictionary')
 
 const classAttributeElements = {
+    classAttributeLink: By.css("body section[id='overview'] div[class='container'] div:nth-child(1) div:nth-child(2) h3:nth-child(1)"),
     classAttributeTitle: By.css("div[class='container'] h3"),
     classAttributeFirstDesc: By.css("div > p:nth-of-type(1)"),
     classAttributeSecondDesc: By.css("div > p:nth-of-type(2)"),
@@ -21,6 +22,9 @@ const classAttributeElements = {
 class ClassAttribute extends Page{
     constructor(browser) {
         super(browser);
+    }
+    async clickClassAttribute(){
+        return await this.click(classAttributeElements.classAttributeLink);
     }
     async getFirstTitleName(){
         return await this.getTextFromElement(classAttributeElements.classAttributeTitle);
@@ -43,38 +47,55 @@ class ClassAttribute extends Page{
     async getThirdCode(){
         return await this.getTextFromElement(classAttributeElements.classAttributeCode3);
     }
-    async getSecondDotText(number){
+    async getDotsText(number){
         if(number === 1){
             return await this.getTextFromElement(classAttributeElements.classAttributeScenarioDot1);
         } else if (number === 2){
             return await this.getTextFromElement(classAttributeElements.classAttributeScenarioDot2);
         }
     }
+    async getSecondTitleName(){
+        return await this.getTextFromElement(classAttributeElements.ScenarioTitle);
+    }
     async getThirdTitleName(){
-        return await this.getTextFromElement(classAttributeElements.playgroundTitle);
+        return await this.getTextFromElement(classAttributeElements.classAttributePlaygroundTitle);
     }
     async getThirdDescription(){
-        return await this.getTextFromElement(classAttributeElements.playgroundDescription);
+        return await this.getTextFromElement(classAttributeElements.classAttributeThirdDesc);
     }
     async getButtonText(color){
         switch (color){
             case 'yellow':
+                await this.sleep(500)
                 return await this.getTextFromElement(classAttributeElements.yellowBtn);
-                break
 
             case 'green':
+                await this.sleep(500)
                 return await this.getTextFromElement(classAttributeElements.greenBtn);
-                break
 
             case 'blue':
+                await this.sleep(500)
                 return await this.getTextFromElement(classAttributeElements.blueBtn);
-                break
             default : return 'Give a valid color name (yellow, green, blue)'
         }
     }
     async clickButtonByColor(buttonColor){
-        let element = await this.findElement(classAttributeElements.inputTextBoxPlaceholder)
-        return await this.getAttribute(element);
+        switch (buttonColor){
+            case 'yellow':
+                await this.sleep(500)
+                return await this.click(classAttributeElements.yellowBtn);
+
+            case 'green':
+                await this.sleep(500)
+                return await this.click(classAttributeElements.greenBtn);
+
+
+            case 'blue':
+                await this.sleep(500)
+                return await this.click(classAttributeElements.blueBtn);
+
+            default : return 'Give a valid color name (yellow, green, blue)'
+        }
     }
 }
 

@@ -29,10 +29,11 @@ module.exports = {
         classAttributeCode3: "//button[contains(concat(' ', normalize-space(@class), ' '), ' btn-primary ')]",
         ScenarioTitle: "Scenario",
         classAttributeScenarioDot1: "Record primary (blue) button click and press ok in alert popup.",
-        classAttributeScenarioDot1: "Then execute your test to make sure that it can identify the button using btn-primary class.",
+        classAttributeScenarioDot2: "Then execute your test to make sure that it can identify the button using btn-primary class.",
         classAttributePlaygroundTitle: "Playground",
         greenBtn: "Button",
         blueBtn: "Button",
         greenBtn: "Button",
+        alertText: 'Primary button pressed'
     },
 }

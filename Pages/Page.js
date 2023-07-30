@@ -63,6 +63,22 @@ class Page{
     async getAttribute(element) {
         return element.getAttribute('placeholder')
     };
+    async waitAlert() {
+        await this.driver.wait(until.alertIsPresent())
+    };
+    async getAlertText() {
+        let alert = await this.driver.switchTo().alert()
+        return await alert.getText()
+    };
+    async confirmAlert() {
+        let alert = await this.driver.switchTo().alert();
+        await alert.accept();
+    };
+    async cancelAlert() {
+        let alert = await this.driver.switchTo().alert();
+        await alert.dismiss();
+    };
+
 }
 
 
