@@ -36,4 +36,25 @@ module.exports = {
         greenBtn: "Button",
         alertText: 'Primary button pressed'
     },
+    shadowDOMDict: {
+
+    },
+    overlappedElementDict: {
+
+    },
+    nonBlockingSpaceDict: {
+
+    },
+    mouseOverDict: {},
+    visibilityDisc: {},
+    progressBarDict: {},
+    verifyTextDict: {},
+    dynamicTableDict: {},
+    scrollbarsDict: {},
+    clickDict: {},
+    clientSideDelayDict: {},
+    ajaxDataDict: {},
+    loadDelayDict: {},
+    hiddenLayersDict: {},
+    dynamicIDDict: {}
 }

@@ -12,7 +12,7 @@
   "dependencies": {
     "chai": "^4.3.7",
     "mocha": "^10.2.0",
-    "selenium-webdriver": "^4.10.0"
+    "selenium-webdriver": "^4.11.1"
   },
   "devDependencies": {
     "nyc": "^15.1.0"

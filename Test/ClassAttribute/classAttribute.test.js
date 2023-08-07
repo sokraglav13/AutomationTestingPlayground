@@ -1,16 +1,17 @@
 const Page = require('../../Pages/ClassAttribute/ClassAttribute')
-const {url,timeoutTest} = require('../../config')
-const {assert, use} = require('chai')
+const {url,timeoutTest, browser} = require('../../config')
+const {assert} = require('chai')
 const {classAttributeDict} = require('../../Pages/dictionary')
-
+browser.forEach(browser => {
 describe('Login scenarios ', async function () {
     let  driver;
     before(async function (){
         this.timeout(timeoutTest)
-        driver = new Page('chrome')
+        driver = new Page(browser)
         await driver.maximizeWindow()
         await driver.visit(url)
         await driver.clickClassAttribute()
+        await driver.sleep(5000)
     })
     after(async function (){
         this.timeout(timeoutTest)
@@ -79,4 +80,5 @@ describe('Login scenarios ', async function () {
         assert.equal(text,classAttributeDict.alertText)
         await driver.cancelAlert()
     })
+})
 })
