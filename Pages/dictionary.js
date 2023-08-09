@@ -42,7 +42,7 @@ module.exports = {
     overlappedElementDict: {
 
     },
-    nonBlockingSpaceDict: {
+    nonBreakingSpaceDict: {
 
     },
     mouseOverDict: {},
@@ -53,8 +53,25 @@ module.exports = {
     scrollbarsDict: {},
     clickDict: {},
     clientSideDelayDict: {},
-    ajaxDataDict: {},
+    ajaxDataDict: {
+        ajaxTitle: "AJAX Data",
+        ajaxDescription: "An element may appaear on a page after processing of an AJAX request to a web server. A test should be able to wait for an element to show up.",
+        scenarioTitle: "Scenario",
+        dot1: "Record the following steps. Press the button below and wait for data to appear (15 seconds), click on text of the loaded label.",
+        dot2: "Then execute your test to make sure it waits for label text to appear.",
+        playgroundTitle: "Playground",
+        buttonText: "Button Triggering AJAX Request",
+        responseMessage: "Data loaded with AJAX get request.",
+
+    },
     loadDelayDict: {},
     hiddenLayersDict: {},
-    dynamicIDDict: {}
+    dynamicIDDict: {},
+    homePageDict: {
+        title: "UI Test Automation\n" +
+            "Playground",
+        quote: "Quality is not an act, it is a habit.",
+        yellowBox: "The purpose of this website is to provide a platform for sharpening UI test automation skills. Use it to practice with your test automation tool. Use it to learn test automation techniques.",
+        paragraph: "Different automation pitfalls appearing in modern web applications are described and emulated below."
+    }
 }

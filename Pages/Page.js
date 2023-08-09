@@ -1,7 +1,5 @@
-const {WebDriver,By, Builder, until, Capabilities, Key} = require("selenium-webdriver");
+const {By, Builder, until, Capabilities, Key} = require("selenium-webdriver");
 const {commandsTimeout} = require('../config')
-const {DriverService} = require("selenium-webdriver/remote");
-const {Options, ServiceBuilder} = require("selenium-webdriver/chrome");
 class Page{
     constructor(browser) {
         if(browser === 'chrome'){
@@ -40,6 +38,27 @@ class Page{
     }
     async sleep (ms){
         await this.driver.sleep(ms);
+    }
+    async waitUntilElementIsVisible (element) {
+        await this.driver.wait(until.elementIsVisible(this.driver.findElement(element)), commandsTimeout)
+    }
+    async waitUntilElementIsVisible (element) {
+        return await this.driver.wait(until.elementIsVisible(this.driver.findElement(element)), commandsTimeout);
+    };
+    async waitUntilElementIsNotVisible (element) {
+        return await this.driver.wait(until.elementIsNotVisible(this.driver.findElement(element)), commandsTimeout);
+    };
+    async waitUntilElementLocated (element) {
+        await this.driver.wait((until.elementLocated(element)), commandsTimeout);
+    };
+    async isVisible (element) {
+        return await this.driver.findElement(element).isDisplayed();
+    }
+    async isEnabled (element) {
+        return await this.driver.findElement(element).isEnabled();
+    }
+    async isSelected (element) {
+        return await this.driver.findElement(element).isSelected();
     }
     async getTextFromElement (element) {
         // await this.sleep(1500)

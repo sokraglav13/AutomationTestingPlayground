@@ -1,0 +1,143 @@
+const Page = require('../../Pages/HomePage/HomePage')
+const {url,timeoutTest, browser} = require('../../config')
+const {assert} = require('chai')
+const {homePageDict} = require('../../Pages/dictionary')
+const {homePageElements} = require('../../Pages/HomePage/HomePage')
+const {By} = require('selenium-webdriver')
+browser.forEach(browser => {
+    describe('Assert elements with text', async function () {
+        let  driver;
+        before(async function (){
+            this.timeout(timeoutTest)
+            driver = new Page(browser)
+            await driver.maximizeWindow()
+            await driver.visit(url)
+            await driver.sleep(5000)
+        })
+        after(async function (){
+            this.timeout(timeoutTest)
+            await driver.closeBrowser()
+        })
+        it("Check the title", async function () {
+            let title = await driver.getTheTitle()
+            assert.equal(title,homePageDict.title)
+        })
+        it("Check the quote", async function () {
+            let quote = await driver.getTheQuote()
+            assert.equal(quote,homePageDict.quote)
+        })
+        it("Check the yellow box", async function () {
+            let yellowBox = await driver.getTheYellowBox()
+            assert.equal(yellowBox,homePageDict.yellowBox)
+        })
+        it("Check the mini paragraph", async function () {
+            let paragraph = await driver.getTheParagraph()
+            assert.equal(paragraph,homePageDict.paragraph)
+        })
+    })
+    describe('Click All the links and wait for specific page item', async function () {
+        let  driver;
+        const titleElement = By.css("div[class='container'] h3")
+        beforeEach(async function (){
+            this.timeout(timeoutTest)
+            driver = new Page(browser)
+            await driver.maximizeWindow()
+            await driver.visit(url)
+        })
+        afterEach(async function (){
+            this.timeout(timeoutTest)
+            await driver.closeBrowser()
+        })
+        it("Click the Dynamic ID", async function () {
+            this.timeout(timeoutTest)
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.dynamicID)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Class Attribute", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.classAttribute)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Hidden Layers", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.hiddenLayers)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Load Delay", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.loadDelay)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the AJAX Data", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.ajaxData)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Client Side Delay", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.clientSideDelay)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Click", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.click)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Text Input", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.textInput)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Scrollbars", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.scrollbars)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Dynamic Table", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.dynamicTable)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Verify Text", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.verifyText)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Progress Bar", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.progressBar)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Visibility", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.visibility)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Sample App", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.sampleApp)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Mouse Over", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.mouseOver)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Non-Breaking Space", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.nonBreakingSpace)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Overlapped Element", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.overlappedElement)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+        it("Click the Shadow DOM", async function () {
+            this.timeout(timeoutTest)
+            await driver.click(homePageElements.link.shadowDom)
+            await driver.waitUntilElementIsVisible(titleElement)
+        })
+})
+})
