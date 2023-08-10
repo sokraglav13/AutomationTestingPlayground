@@ -100,6 +100,9 @@ class Page{
     async getAttribute(element) {
         return element.getAttribute('placeholder')
     };
+    async getClassAttribute(element) {
+        return element.getAttribute('class')
+    };
     async waitAlert() {
         await this.driver.wait(until.alertIsPresent())
     };
