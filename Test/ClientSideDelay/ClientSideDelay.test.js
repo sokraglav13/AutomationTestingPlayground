@@ -71,6 +71,7 @@ browser.forEach(browser => {
             //after click
             isSpinnerVisible = await driver.isSpinnerVisible()
             expect(isSpinnerVisible).to.be.true
+            
         })
     })
 })
