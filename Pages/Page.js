@@ -27,6 +27,7 @@ class Page{
     //         this.driver = await new Builder().forBrowser("firefox").setFirefoxOptions(options).build();
     //     } else this.driver = new Builder().forBrowser(browser).build();
     // };
+
     async visit (url) {
         await this.driver.get(url);
     };
@@ -39,6 +40,8 @@ class Page{
     async sleep (ms){
         await this.driver.sleep(ms);
     }
+    // find the shadow Dom element
+
     async waitUntilElementIsVisible (element) {
         await this.driver.wait(until.elementIsVisible(this.driver.findElement(element)), commandsTimeout)
     }
@@ -93,9 +96,15 @@ class Page{
     async closeBrowser() {
         await this.driver.quit();
     };
+    async refreshPage () {
+        await this.driver.navigate().refresh();
+    }
     async findElement(element) {
         let theElem = await this.driver.findElement(element);
         return theElem;
+    };
+    async getAttributeID(element) {
+        return element.getAttribute('id')
     };
     async getAttribute(element) {
         return element.getAttribute('placeholder')
