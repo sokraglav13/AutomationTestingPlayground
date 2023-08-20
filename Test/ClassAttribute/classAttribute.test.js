@@ -3,7 +3,7 @@ const {url,timeoutTest, browser} = require('../../config')
 const {assert} = require('chai')
 const {classAttributeDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
-describe('Login scenarios ', async function () {
+describe('Class Attributes', async function () {
     let  driver;
     before(async function (){
         this.timeout(timeoutTest)
@@ -11,7 +11,6 @@ describe('Login scenarios ', async function () {
         await driver.maximizeWindow()
         await driver.visit(url)
         await driver.clickClassAttribute()
-        await driver.sleep(5000)
     })
     after(async function (){
         this.timeout(timeoutTest)

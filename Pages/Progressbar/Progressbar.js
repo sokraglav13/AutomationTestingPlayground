@@ -11,3 +11,6 @@ class Progressbar extends Page {
         super(browser);
     }
 }
+
+module.exports = Progressbar
+

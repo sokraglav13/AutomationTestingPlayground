@@ -47,7 +47,6 @@ class DynamicID extends Page {
         const elem = await this.findElement(dynamicIDElements.blueButton)
         return await this.getAttributeID(elem)
     }
-
 }
 
 module.exports = DynamicID

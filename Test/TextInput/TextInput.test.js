@@ -4,7 +4,7 @@ const {assert} = require('chai')
 const {textInputDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
 
-describe('Login scenarios ', async function () {
+describe('Text Input', async function () {
     let driver;
     before(async function () {
         this.timeout(timeoutTest)

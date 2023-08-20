@@ -40,8 +40,25 @@ class Page{
     async sleep (ms){
         await this.driver.sleep(ms);
     }
-    // find the shadow Dom element
+    async mouseOver (element){
+        const elementToHover = await this.driver.findElement(element);
+        const actions = this.driver.actions({ bridge: true }); // Create an Actions instance
+        await actions.move({ origin: elementToHover }).perform();
+    }
+    async mouseOut (element){
+        const elementToHover = await this.driver.findElement(element);
+        const actions = this.driver.actions({ bridge: true }); // Create an Actions instance
+        await actions.move({ x: 0, y: 0 }).perform();
+    }
 
+    async isElementAttached(element) {
+        try {
+            const webElement = await this.driver.findElements(element);
+            return webElement.length > 0;
+        } catch (e) {
+            console.error("Error occurred while checking the element", e);
+        }
+    };
     async waitUntilElementIsVisible (element) {
         await this.driver.wait(until.elementIsVisible(this.driver.findElement(element)), commandsTimeout)
     }
@@ -111,6 +128,9 @@ class Page{
     };
     async getClassAttribute(element) {
         return element.getAttribute('class')
+    };
+    async getClassAttributeValue(element) {
+        return element.getAttribute('value')
     };
     async waitAlert() {
         await this.driver.wait(until.alertIsPresent())

@@ -4,7 +4,7 @@ const {assert} = require('chai')
 const {sampleAppDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
 
-describe('Login scenarios ', async function () {
+describe('Sample App', async function () {
     let driver;
     beforeEach(async function () {
         this.timeout(timeoutTest)

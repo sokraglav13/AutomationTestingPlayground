@@ -11,3 +11,6 @@ class VerifyText extends Page {
         super(browser);
     }
 }
+
+module.exports = VerifyText
+

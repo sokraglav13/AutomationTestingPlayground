@@ -11,3 +11,5 @@ class NonBreakingSpace extends Page {
         super(browser);
     }
 }
+
+module.exports = NonBreakingSpace

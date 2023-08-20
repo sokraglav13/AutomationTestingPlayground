@@ -11,3 +11,6 @@ class Scrollbars extends Page {
         super(browser);
     }
 }
+
+module.exports = Scrollbars
+

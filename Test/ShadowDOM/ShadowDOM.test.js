@@ -3,7 +3,7 @@ const {url,timeoutTest, browser} = require('../../config')
 const {assert,expect} = require('chai')
 const {shadowDOMDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
-    describe('', async function () {
+    describe('Shadow DOM', async function () {
         let  driver;
         before(async function (){
             this.timeout(timeoutTest)

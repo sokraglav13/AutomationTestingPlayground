@@ -11,3 +11,5 @@ class DynamicTable extends Page {
         super(browser);
     }
 }
+
+module.exports = DynamicTable

@@ -177,6 +177,8 @@ module.exports = {
 
     },
     hiddenLayersDict: {
+        greenButtonIdAttr: "greenButton",
+        blueButtonIdAttr: "blueButton",
         hiddenLayersTitle: "Hidden Layers",
         hiddenLayersDesc: "Some applications use DOM caching techniques. For example, if a user follows a multi step process and each step requires filling data into a form then forms may be cached at the client side along the way. It allows to quickly navigate back and forward through the steps without requesting data from a server. When form is cached it just pushed on-top of z-order stack. It means that an element may be still present in the DOM tree but overlapped with another layer of elements. In this case it is important that a test does not interact with inactive elements becasue they are invisible to a user.\n" +
             "\n",

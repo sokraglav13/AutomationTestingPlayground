@@ -3,7 +3,7 @@ const {url,timeoutTest, browser} = require('../../config')
 const {assert} = require('chai')
 const {clickDict, ajaxDataDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
-    describe('Validate all text in page', async function () {
+    describe('Click', async function () {
         let  driver;
         before(async function (){
             this.timeout(timeoutTest)

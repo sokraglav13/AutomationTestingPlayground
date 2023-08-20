@@ -11,3 +11,6 @@ class OverlappedElement extends Page {
         super(browser);
     }
 }
+
+module.exports = OverlappedElement
+

@@ -3,7 +3,7 @@ const {url,timeoutTest, browser} = require('../../config')
 const {assert,expect} = require('chai')
 const {clientSideDelayDict, ajaxDataDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
-    describe('', async function () {
+    describe('Client Side Delay', async function () {
         let  driver;
         before(async function (){
             this.timeout(timeoutTest)

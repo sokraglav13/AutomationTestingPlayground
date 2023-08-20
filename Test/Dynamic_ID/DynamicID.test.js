@@ -3,7 +3,7 @@ const {url,timeoutTest, browser} = require('../../config')
 const {assert} = require('chai')
 const {dynamicIDDict} = require('../../Pages/dictionary')
 browser.forEach(browser => {
-    describe('', async function () {
+    describe('Dynamic ID', async function () {
         let  driver;
         before(async function (){
             this.timeout(timeoutTest)
