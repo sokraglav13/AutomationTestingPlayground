@@ -26,7 +26,7 @@ stages:
   - test
 
 selenium_tests:
-  image: node:14
+  image: node:18.16.0
   services:
     - name: docker:dind
       entrypoint: ["dockerd-entrypoint.sh"]
@@ -35,12 +35,12 @@ selenium_tests:
     - name: selenium/node-chrome:115.0
       alias: chrome1
   before_script:
-    - apt-get update -y
-    - apt-get install -y curl
-    - curl -fsSL https://get.docker.com -o get-docker.sh
-    - sh get-docker.sh
+    - apt-get update
+    - apt-get -y install libnss3-dev
     - npm install
-    - npm install mocha -g
+    - chmod 0777 ./node_modules/.bin/mocha
+    - chmod 0777 ./node_modules/chromedriver/bin/chromedriver
+    - ./node_modules/chromedriver/bin/chromedriver&
   script:
     - npm run test-mochawesome
   artifacts:
