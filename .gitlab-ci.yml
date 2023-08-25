@@ -34,6 +34,7 @@ selenium_tests:
     - chmod 0777 ./node_modules/chromedriver/bin/chromedriver
     - ./node_modules/chromedriver/bin/chromedriver&
   script:
+    - echo "Current working directory: $PWD"
     - npm run test-mochawesome
   artifacts:
     paths:
