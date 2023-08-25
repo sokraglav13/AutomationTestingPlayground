@@ -22,27 +22,25 @@
 #  artifacts:
 #    paths:
 #      - TestResults/ParallelExecution # Artifacts for parallel execution reports
-stages:
-  - test
-
 selenium_tests:
   image: node:18.16.0
-  services:
-    - name: docker:dind
-      entrypoint: ["dockerd-entrypoint.sh"]
-    - name: selenium/hub:4.9
-      alias: hub
-    - name: selenium/node-chrome:115.0
-      alias: chrome1
   before_script:
+    - wget -O chrome.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
+    - unzip chrome.zip -d chrome
+    - mv chrome/chrome-win64/* /usr/local/bin/
     - apt-get update
+    - apt-get -y install google-chrome-stable=
     - apt-get -y install libnss3-dev
+    - npm install chromedriver@116
     - npm install
     - chmod 0777 ./node_modules/.bin/mocha
     - chmod 0777 ./node_modules/chromedriver/bin/chromedriver
     - ./node_modules/chromedriver/bin/chromedriver&
   script:
+    - /usr/local/bin/chrome.exe # Run the Chrome browser executable
     - npm run test-mochawesome
   artifacts:
     paths:
       - TestResults/NormalExecution
+
+

@@ -14,22 +14,23 @@ class Page{
         // capabilities.merge(chromeOptions)
         // this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
         //     .withCapabilities(capabilities).build();
+        this.driver = new Builder().forBrowser(browser).build();
 
-        if(browser === "chrome"){
-            const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
-            const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
-            const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloads/chromedriver-win64/chromedriver.exe");
-            this.driver = new Builder().forBrowser(browser).setChromeService(service).setChromeOptions(options).build();
-        }else if (browser === "firefox"){
-            const {Options} = require("selenium-webdriver/firefox");
-            const options = new Options().setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
-            this.driver = new Builder().forBrowser(browser).setFirefoxOptions(options).build();
-        }else if(browser === "MicrosoftEdge") {
-            const {Options,ServiceBuilder} = require("selenium-webdriver/edge");
-            const options = new Options().setEdgeChromiumBinaryPath("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe");
-            const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloads/msedge/edgedriver_win64/msedgedriver.exe");
-            this.driver = new Builder().forBrowser(browser).setEdgeService(service).setEdgeOptions(options).build();
-        }
+        // if(browser === "chrome"){
+        //     const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
+        //     const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
+        //     const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloadgs/chromedriver-win64/chromedriver.exe");
+        //     this.driver = new Builder().forBrowser(browser).setChromeService(service).setChromeOptions(options).build();
+        // }else if (browser === "firefox"){
+        //     const {Options} = require("selenium-webdriver/firefox");
+        //     const options = new Options().setBinary("C:/Program Files/Mozilla Firefox/firefox.exe");
+        //     this.driver = new Builder().forBrowser(browser).setFirefoxOptions(options).build();
+        // }else if(browser === "MicrosoftEdge") {
+        //     const {Options,ServiceBuilder} = require("selenium-webdriver/edge");
+        //     const options = new Options().setEdgeChromiumBinaryPath("C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe");
+        //     const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloads/msedge/edgedriver_win64/msedgedriver.exe");
+        //     this.driver = new Builder().forBrowser(browser).setEdgeService(service).setEdgeOptions(options).build();
+        // }
     }
     /** Perform a visit to a specified URL
      * @param url - https://www.exampleURL.com
