@@ -1,0 +1,24 @@
+stages:
+  - test
+
+test:
+  stage: test
+  image: node:18.16.0 # Use an appropriate Node.js version
+  before_script:
+    - npm install
+  script:
+    - npm run test-mochawesome
+  artifacts:
+    paths:
+      - TestResults/NormalExecution # Artifacts for mochawesome reports
+
+#parallel_test:
+#  stage: test
+#  image: node:14 # Use an appropriate Node.js version
+#  before_script:
+#    - npm install
+#  script:
+#    - npm run test-parallel-mochawesome
+#  artifacts:
+#    paths:
+#      - TestResults/ParallelExecution # Artifacts for parallel execution reports
