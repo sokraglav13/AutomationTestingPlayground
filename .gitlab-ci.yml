@@ -42,5 +42,3 @@ selenium_tests:
   artifacts:
     paths:
       - TestResults/NormalExecution
-
-

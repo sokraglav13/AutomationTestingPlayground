@@ -15,7 +15,6 @@ class Page{
         // this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
         //     .withCapabilities(capabilities).build();
         this.driver = new Builder().forBrowser(browser).build();
-
         // if(browser === "chrome"){
         //     const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
         //     const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
