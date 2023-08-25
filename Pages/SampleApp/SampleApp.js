@@ -1,6 +1,6 @@
-const {By, Builder} = require('selenium-webdriver');
-const Page = require('../Page')
-const {sampleAppDict} = require('../dictionary')
+const {By, Builder} = require("selenium-webdriver");
+const Page = require("../Page");
+const {sampleAppDict} = require("../dictionary");
 
 const sampleAppElements = {
     title: By.css("div[class='container'] h3"),
@@ -10,33 +10,24 @@ const sampleAppElements = {
     passwordField: By.xpath("/html//section/div[@class='container']//input[@name='Password']"),
     logInBtn: By.id("login"),
     sampleAppLink: By.css("a[href='/sampleapp']")
-}
+};
 class SampleApp extends Page{
     constructor(browser) {
         super(browser);
     }
     async login(username,password){
-        await this.send(sampleAppElements.usernameField,username)
-        await this.send(sampleAppElements.passwordField,password)
-        await this.click(sampleAppElements.logInBtn)
+        await this.send(sampleAppElements.usernameField,username);
+        await this.send(sampleAppElements.passwordField,password);
+        await this.click(sampleAppElements.logInBtn);
     }
     async clickLogIn(){
-        await this.click(sampleAppElements.logInBtn)
-    }
-    async getTitleName(){
-        return await this.getTextFromElement(sampleAppElements.title);
-    }
-    async getLoginBtnName(){
-        return await this.getTextFromElement(sampleAppElements.logInBtn);
-    }
-    async getDescription(){
-        return await this.getTextFromElement(sampleAppElements.description);
+        await this.click(sampleAppElements.logInBtn);
     }
     async getLoginState(){
         return await this.getTextFromElement(sampleAppElements.textInfo);
     }
     async clickSampleApp(){
-        await this.click(sampleAppElements.sampleAppLink)
+        await this.click(sampleAppElements.sampleAppLink);
     }
 }
 

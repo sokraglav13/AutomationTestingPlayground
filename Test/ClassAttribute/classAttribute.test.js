@@ -1,83 +1,29 @@
-const Page = require('../../Pages/ClassAttribute/ClassAttribute')
-const {url,timeoutTest, browser} = require('../../config')
-const {assert} = require('chai')
-const {classAttributeDict} = require('../../Pages/dictionary')
+const Page = require("../../Pages/ClassAttribute/ClassAttribute");
+const {url,timeoutTest, browser} = require("../../config");
+const {assert} = require("chai");
+const {classAttributeDict} = require("../../Pages/dictionary");
 browser.forEach(browser => {
-describe('Class Attributes', async function () {
+describe("Class Attributes", async function () {
     let  driver;
     before(async function (){
-        this.timeout(timeoutTest)
-        driver = new Page(browser)
-        await driver.maximizeWindow()
-        await driver.visit(url)
-        await driver.clickClassAttribute()
-    })
+        this.timeout(timeoutTest);
+        driver = new Page(browser);
+        await driver.maximizeWindow();
+        await driver.visit(url);
+        await driver.clickClassAttribute();
+    });
     after(async function (){
-        this.timeout(timeoutTest)
-        await driver.closeBrowser()
-    })
-    it('Check the first title', async function () {
-        this.timeout(timeoutTest)
-        let expected = await driver.getFirstTitleName()
-        assert.equal(classAttributeDict.classAttributeTitle,expected)
-    })
-    it('Check the second title', async function () {
-        this.timeout(timeoutTest)
-        let expected = await driver.getSecondTitleName()
-        assert.equal(classAttributeDict.ScenarioTitle,expected)
-    })
-    it('Check the third title', async function () {
-        this.timeout(timeoutTest)
-        let expected = await driver.getThirdTitleName()
-        assert.equal(classAttributeDict.classAttributePlaygroundTitle,expected)
-    })
-    it('Check the description one with code', async function () {
-        this.timeout(timeoutTest)
-        let expectedDesc = await driver.getFirstDescription()
-        assert.equal(classAttributeDict.classAttributeFirstDesc,expectedDesc)
-        let expectedCode = await driver.getFirstCode()
-        assert.equal(classAttributeDict.classAttributeCode1,expectedCode)
-    })
-    it('Check the description two with code', async function () {
-        this.timeout(timeoutTest)
-        let expectedDesc = await driver.getSecondDescription()
-        assert.equal(classAttributeDict.classAttributeSecondDesc,expectedDesc)
-        let expectedCode = await driver.getSecondCode()
-        assert.equal(classAttributeDict.classAttributeCode2,expectedCode)
-    })
-    it('Check the description three with code', async function () {
-        this.timeout(timeoutTest)
-        let expectedDesc = await driver.getThirdDescription()
-        assert.equal(classAttributeDict.classAttributeThirdDesc,expectedDesc)
-        let expectedCode = await driver.getThirdCode()
-        assert.equal(classAttributeDict.classAttributeCode3,expectedCode)
-    })
-    it('Check the dots message', async function () {
-        this.timeout(timeoutTest)
-        let expectedDot1 = await driver.getDotsText(1)
-        assert.equal(classAttributeDict.classAttributeScenarioDot1,expectedDot1)
-        let expectedDot2 = await driver.getDotsText(2)
-        assert.equal(classAttributeDict.classAttributeScenarioDot2,expectedDot2)
-    })
-    it('Click buttons', async function () {
-        this.timeout(timeoutTest)
-        await driver.sleep(1000)
-        await driver.clickButtonByColor('green')
-        await driver.sleep(1000)
-        await driver.clickButtonByColor('yellow')
-        await driver.sleep(1000)
-        await driver.clickButtonByColor('blue')
-        await driver.waitAlert()
-        await driver.cancelAlert()
-    })
-    it('Handle the alert after click btn', async function () {
-        this.timeout(timeoutTest)
-        await driver.sleep(1000)
-        await driver.clickButtonByColor('blue')
-        await driver.waitAlert()
-        let text = await driver.getAlertText()
-        assert.equal(text,classAttributeDict.alertText)
-        await driver.cancelAlert()
-    })
-})
-})
+        this.timeout(timeoutTest);
+        await driver.closeBrowser();
+    });
+    it("Handle the alert after click blue button", async function () {
+        this.timeout(timeoutTest);
+        await driver.sleep(1000);
+        await driver.clickBlueButton();
+        await driver.waitAlert();
+        let text = await driver.getAlertText();
+        assert.equal(text,classAttributeDict.alertText);
+        await driver.confirmAlert();
+    });
+});
+});

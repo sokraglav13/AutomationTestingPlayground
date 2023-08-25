@@ -1,5 +1,5 @@
-const {By, Builder} = require('selenium-webdriver');
-const Page = require('../Page')
+const {By} = require("selenium-webdriver");
+const Page = require("../Page");
 
 const homePageElements = {
     title: By.css("h1#title"),
@@ -26,28 +26,28 @@ const homePageElements = {
         overlappedElement: By.css("div:nth-of-type(5) > div:nth-of-type(1) > h3 > a"),
         shadowDom: By.css("div:nth-of-type(5) > div:nth-of-type(2) > h3 > a"),
     }
-}
+};
 
 class HomePage extends Page {
     constructor(browser) {
         super(browser);
     }
     async getTheTitle(){
-        return await this.getTextFromElement(homePageElements.title)
+        return await this.getTextFromElement(homePageElements.title);
     }
     async getTheQuote(){
-        return await this.getTextFromElement(homePageElements.quote)
+        return await this.getTextFromElement(homePageElements.quote);
     }
     async getTheYellowBox(){
-        return await this.getTextFromElement(homePageElements.yellowBox)
+        return await this.getTextFromElement(homePageElements.yellowBox);
     }
     async getTheParagraph(){
-        return await this.getTextFromElement(homePageElements.smallParagraph)
+        return await this.getTextFromElement(homePageElements.smallParagraph);
     }
     async clickLink(link){
-        await this.click(link)
+        await this.click(link);
     }
 }
 
-module.exports = HomePage
+module.exports = HomePage;
 module.exports.homePageElements = homePageElements;

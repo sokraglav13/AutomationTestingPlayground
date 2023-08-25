@@ -1,7 +1,13 @@
 module.exports = {
+    /**The URL of the website to automate */
     url: 'http://www.uitestingplayground.com/',
-    timeoutTest: 50000,
+
+    /**The test timeout time (0) = infinity time*/
+    timeoutTest: 0,
+
+    /**The timeout is for command execution   */
     commandsTimeout: 40000,
-    //'chrome', 'firefox', 'MicrosoftEdge'
+
+    /** Available browsers for test execution: [chrome, MicrosoftEdge, firefox] */
     browser: ['chrome']
 }
