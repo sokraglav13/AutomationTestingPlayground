@@ -26,6 +26,7 @@ selenium_tests:
   image: node:18.16.0
   before_script:
     - apt-get update
+    - apt-get -y install libnss3-dev
     - npm install chromedriver@115
     - npm install
     - chmod 0777 ./node_modules/.bin/mocha
