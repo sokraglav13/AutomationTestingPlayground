@@ -25,11 +25,8 @@
 selenium_tests:
   image: node:18.16.0
   before_script:
-    - wget -O chrome.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
-    - unzip chrome.zip -d chrome
-    - mv chrome/chrome-win64/* /usr/local/bin/
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - apt-get update
-    - apt-get -y install google-chrome-stable=
     - apt-get -y install libnss3-dev
     - npm install chromedriver@116
     - npm install
@@ -37,7 +34,6 @@ selenium_tests:
     - chmod 0777 ./node_modules/chromedriver/bin/chromedriver
     - ./node_modules/chromedriver/bin/chromedriver&
   script:
-    - /usr/local/bin/chrome.exe # Run the Chrome browser executable
     - npm run test-mochawesome
   artifacts:
     paths:
