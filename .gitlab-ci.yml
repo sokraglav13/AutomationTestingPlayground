@@ -1,16 +1,16 @@
-stages:
-  - test
-
-test:
-  stage: test
-  image: node:18.16.0 # Use an appropriate Node.js version
-  before_script:
-    - npm install
-  script:
-    - npm run test-mochawesome
-  artifacts:
-    paths:
-      - TestResults/NormalExecution # Artifacts for mochawesome reports
+#stages:
+#  - test
+#
+#test:
+#  stage: test
+#  image: node:18.16.0 # Use an appropriate Node.js version
+#  before_script:
+#    - npm install
+#  script:
+#    - npm run test-mochawesome
+#  artifacts:
+#    paths:
+#      - TestResults/NormalExecution # Artifacts for mochawesome reports
 
 #parallel_test:
 #  stage: test
@@ -22,3 +22,27 @@ test:
 #  artifacts:
 #    paths:
 #      - TestResults/ParallelExecution # Artifacts for parallel execution reports
+stages:
+  - test
+
+selenium_tests:
+  image: node:14
+  services:
+    - name: docker:dind
+      entrypoint: ["dockerd-entrypoint.sh"]
+    - name: selenium/hub:4.9
+      alias: hub
+    - name: selenium/node-chrome:115.0
+      alias: chrome1
+  before_script:
+    - apt-get update -y
+    - apt-get install -y curl
+    - curl -fsSL https://get.docker.com -o get-docker.sh
+    - sh get-docker.sh
+    - npm install
+    - npm install mocha -g
+  script:
+    - npm run test-mochawesome
+  artifacts:
+    paths:
+      - TestResults/NormalExecution
