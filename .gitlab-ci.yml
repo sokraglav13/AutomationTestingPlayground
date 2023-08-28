@@ -33,7 +33,8 @@ selenium_tests:
   services:
     - name: selenium/standalone-chrome:115.0
   script:
-    - npm run test-mochawesome
+    - ls
+    - mocha test/**/*.test.js
   artifacts:
     paths:
       - TestResults/NormalExecution
