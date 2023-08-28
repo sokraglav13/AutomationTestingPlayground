@@ -7,14 +7,14 @@ class Page{
      */
     constructor(browser) {
         // Remote Driver for docker test running
-        // const {Options} =require(`selenium-webdriver/${browser}`)
-        // const capabilities = Capabilities.chrome();
-        // const chromeOptions = new Options();
-        // chromeOptions.addArguments('--headless');
-        // capabilities.merge(chromeOptions)
+        const {Options} =require(`selenium-webdriver/${browser}`)
+        const capabilities = Capabilities.chrome();
+        const chromeOptions = new Options();
+        chromeOptions.addArguments('--headless');
+        capabilities.merge(chromeOptions)
         // this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
         //     .withCapabilities(capabilities).build();
-        this.driver = new Builder().forBrowser(browser).build();
+        this.driver = new Builder().forBrowser(browser).withCapabilities(capabilities).build();
         // if(browser === "chrome"){
         //     const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
         //     const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
