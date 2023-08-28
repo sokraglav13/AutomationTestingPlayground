@@ -9,8 +9,11 @@ class Page{
         // Remote Driver for docker test running
         const {Options} =require(`selenium-webdriver/${browser}`)
         const capabilities = Capabilities.chrome();
-        const chromeOptions = new Options();
+        const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable");
+        // const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
         chromeOptions.addArguments('--headless');
+        chromeOptions.addArguments('--no-sandbox')
+        chromeOptions.addArguments('--disable-dev-shm-usage')
         capabilities.merge(chromeOptions)
         // this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
         //     .withCapabilities(capabilities).build();
