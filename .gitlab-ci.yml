@@ -34,7 +34,7 @@ selenium_tests:
     - name: selenium/standalone-chrome:115.0
   script:
     - ls
-    - mocha test/**/*.test.js
+    - mocha Test/**/*.test.js
   artifacts:
     paths:
       - TestResults/NormalExecution
