@@ -22,19 +22,25 @@
 #  artifacts:
 #    paths:
 #      - TestResults/ParallelExecution # Artifacts for parallel execution reports
-#selenium_tests:
-#  image: node:18.16.0
-#  before_script:
-#    - apt-get update
-#    - apt-get -y install libnss3-dev
-#    - npm install chromedriver@115
-#    - npm install -g mocha mochawesome
-#    - npm install
-#  services:
-#    - name: selenium/standalone-chrome:115.0
-#  script:
-#    - ls
-#    - mocha Test/**/*.test.js
-#  artifacts:
-#    paths:
-#      - TestResults/NormalExecution
+selenium_tests:
+  image: node:18.16.0
+  before_script:
+    - apt-get update
+    - apt-get -y install libnss3-dev
+    - npm install chromedriver@115
+    - npm install -g mocha mochawesome
+    - npm install
+    - npm install selenium-webdriver
+    - apt-get update && apt-get install -y wget gnupg
+#   - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \ && echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \ && apt-get update && apt-get install -y google-chrome-stable
+    - wget https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/116.0.5845.96/linux64/chrome-linux64.zip
+    - mkdir /usr/bin/google-chrome-stable
+    - unzip chrome-linux64.zip -d /usr/bin/google-chrome-stable
+  services:
+    - name: selenium/standalone-chrome:115.0
+  script:
+    - ls
+    - mocha Test/**/*.test.js
+  artifacts:
+    paths:
+      - TestResults/NormalExecution
