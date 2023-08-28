@@ -9,7 +9,7 @@ class Page{
         // Remote Driver for docker test running
         const {Options} =require(`selenium-webdriver/${browser}`)
         const capabilities = Capabilities.chrome();
-        const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable/chrome-linux64");
+        const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable");
         // const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
         chromeOptions.addArguments('--headless');
         chromeOptions.addArguments('--no-sandbox')
