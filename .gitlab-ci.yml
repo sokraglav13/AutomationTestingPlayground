@@ -27,7 +27,7 @@ selenium_tests:
   before_script:
     - apt-get update
     - apt-get -y install libnss3-dev
-    - npm install chromedriver@115
+    - npm install chromedriver@116
     - npm install -g mocha mochawesome
     - npm install
     - npm install selenium-webdriver
@@ -39,7 +39,6 @@ selenium_tests:
   services:
     - name: selenium/standalone-chrome:115.0
   script:
-    - ls
     - mocha Test/**/*.test.js
   artifacts:
     paths:
