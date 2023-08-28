@@ -15,6 +15,7 @@ class ClassAttribute extends Page {
     }
 
     async clickBlueButton() {
+        await this.sleep(1500)
         await this.click(classAttributeElements.blueBtn);
     }
 }

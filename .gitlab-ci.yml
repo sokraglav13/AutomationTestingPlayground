@@ -1,27 +1,3 @@
-#stages:
-#  - test
-#
-#test:
-#  stage: test
-#  image: node:18.16.0 # Use an appropriate Node.js version
-#  before_script:
-#    - npm install
-#  script:
-#    - npm run test-mochawesome
-#  artifacts:
-#    paths:
-#      - TestResults/NormalExecution # Artifacts for mochawesome reports
-
-#parallel_test:
-#  stage: test
-#  image: node:14 # Use an appropriate Node.js version
-#  before_script:
-#    - npm install
-#  script:
-#    - npm run test-parallel-mochawesome
-#  artifacts:
-#    paths:
-#      - TestResults/ParallelExecution # Artifacts for parallel execution reports
 selenium_tests:
   image: node:18.16.0
   before_script:
@@ -33,8 +9,6 @@ selenium_tests:
     - npm install selenium-webdriver
     - apt-get update && apt-get install -y wget gnupg
     - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome-archive-keyring.gpg && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-archive-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list && apt-get update && apt-get install -y google-chrome-stable
-#    - mkdir /usr/bin/google-chrome-stable
-#    - unzip chrome-linux64.zip -d /usr/bin/google-chrome-stable
   services:
     - name: selenium/standalone-chrome:115.0
   script:

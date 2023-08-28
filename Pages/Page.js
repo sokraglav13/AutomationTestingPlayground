@@ -7,21 +7,25 @@ class Page{
      */
     constructor(browser) {
         // Remote Driver for docker test running
+        // CI CD settings
         const {Options} =require(`selenium-webdriver/${browser}`)
         const capabilities = Capabilities.chrome();
         const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable");
-        // const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
         chromeOptions.addArguments('--headless');
         chromeOptions.addArguments('--no-sandbox')
         chromeOptions.addArguments('--disable-dev-shm-usage')
         capabilities.merge(chromeOptions)
+        this.driver = new Builder().forBrowser(browser).withCapabilities(capabilities).build();
+
+        // Grid settings-----------------------
         // this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
         //     .withCapabilities(capabilities).build();
-        this.driver = new Builder().forBrowser(browser).withCapabilities(capabilities).build();
+        // -----------------------
+        // Local execution settings
         // if(browser === "chrome"){
         //     const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
         //     const options = new Options().setChromeBinaryPath("C:/Users/SokratisGlavinas/Downloads/chrome-win64/chrome.exe");
-        //     const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloadgs/chromedriver-win64/chromedriver.exe");
+        //     const service = new ServiceBuilder("C:/Users/SokratisGlavinas/Downloads/chromedriver-win64/chromedriver.exe");
         //     this.driver = new Builder().forBrowser(browser).setChromeService(service).setChromeOptions(options).build();
         // }else if (browser === "firefox"){
         //     const {Options} = require("selenium-webdriver/firefox");

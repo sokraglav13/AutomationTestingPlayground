@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc mocha && nyc report --reporter=html",
     "coverage": "nyc --reporter=html mocha",
+    "test-serial": "mocha test/**/*.test.js",
     "test-mochawesome": "mocha test/**/*.test.js --reporter mochawesome --reporter-options reportDir=./TestResults/NormalExecution",
     "test-parallel-mochawesome": "mocha --parallel ./test/**/*.test.js --reporter mochawesome --reporter-options reportDir=./TestResults/ParallelExecution"
   },

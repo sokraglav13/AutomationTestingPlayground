@@ -16,9 +16,8 @@ describe("Class Attributes", async function () {
         this.timeout(timeoutTest);
         await driver.closeBrowser();
     });
-    it("Handle the alert after click blue button", async function () {
+    it("Handle the alert after click blue button", async   function () {
         this.timeout(timeoutTest);
-        await driver.sleep(1000);
         await driver.clickBlueButton();
         await driver.waitAlert();
         let text = await driver.getAlertText();

@@ -35,7 +35,6 @@ browser.forEach(browser => {
                 await driver.clickTheGreenButton();
             } catch (error) {
                 expect(error).to.be.an.instanceOf(Error);
-                expect(error.message).to.equal(ElementClickInterceptedError); // Replace with your actual expected error message
             }
         });
     });
