@@ -25,14 +25,13 @@
 selenium_tests:
   image: node:18.16.0
   before_script:
-    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - apt-get update
     - apt-get -y install libnss3-dev
-    - npm install chromedriver@116
+    - npm install chromedriver@115
+    - npm install -g mocha mochawesome
     - npm install
-    - chmod 0777 ./node_modules/.bin/mocha
-    - chmod 0777 ./node_modules/chromedriver/bin/chromedriver
-    - ./node_modules/chromedriver/bin/chromedriver&
+  services:
+    - name: selenium/standalone-chrome:115.0
   script:
     - npm run test-mochawesome
   artifacts:
