@@ -11,9 +11,12 @@ class Page{
         const {Options} =require(`selenium-webdriver/${browser}`)
         const capabilities = Capabilities.chrome();
         const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable");
+        // const chromeOptions = new Options();
         chromeOptions.addArguments('--headless');
         chromeOptions.addArguments('--no-sandbox')
         chromeOptions.addArguments('--disable-dev-shm-usage')
+        chromeOptions.addArguments("--window-size=1920,1080")
+
         capabilities.merge(chromeOptions)
         this.driver = new Builder().forBrowser(browser).withCapabilities(capabilities).build();
 

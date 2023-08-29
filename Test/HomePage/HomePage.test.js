@@ -51,6 +51,13 @@ browser.forEach(browser => {
             this.timeout(timeoutTest);
             await driver.closeBrowser();
         });
+        it("Click the Progress Bar", async function () {
+            this.timeout(timeoutTest);
+            await driver.click(homePageElements.link.progressBar);
+            await driver.waitUntilElementIsVisible(titleElement);
+            let actual = await driver.getTextFromElement(titleElement);
+            assert.equal(actual,progressBarDict.progressbarTitlePage);
+        });
         it("Click the Dynamic ID", async function () {
             this.timeout(timeoutTest);
             this.timeout(timeoutTest);

@@ -19,19 +19,16 @@ class Progressbar extends Page {
         await this.click(progressbarElements.startBtn);
     }
     async conditionMetPromise () {
-        return new Promise(async (resolve) => {
-            const interval = setInterval(async () => {
-                const expectedPercentage = 75;
+        while(true){
+            try {
                 const progressBar = await this.findElement(progressbarElements.progressBar);
-                const style = await progressBar.getAttribute("style");
-                const widthPercentage = parseInt(style.match(/width: (\d+)/)[1], 10);
-                if (widthPercentage >= expectedPercentage) {
-                    await this.click(progressbarElements.stopBtn);
-                    clearInterval(interval);
-                    resolve(widthPercentage);
-                }
-            }, 30);
-        });
+                const style = await progressBar.getAttribute("aria-valuenow");
+                if (Number(style) === 75)
+                    return Number(style);
+            } catch (StaleElementException) {
+                return true;
+            }
+        }
     }
 }
 
