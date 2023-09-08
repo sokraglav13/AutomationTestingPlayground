@@ -1,8 +1,7 @@
 const Page = require("../../Pages/HiddenLayers/HiddenLayers");
 const {url,timeoutTest, browser} = require("../../config");
 const {assert,expect} = require("chai");
-const {hiddenLayersDict, homePageDict} = require("../../Pages/dictionary");
-const {ElementClickInterceptedError} = require("../../Pages/ErrorMessages");
+const {hiddenLayersDict} = require("../../Pages/dictionary");
 browser.forEach(browser => {
     describe("Hidden Layers", async function () {
         let  driver;
