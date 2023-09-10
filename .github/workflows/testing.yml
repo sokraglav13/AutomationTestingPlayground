@@ -1,0 +1,40 @@
+name: Selenium Tests
+
+on: [push]
+
+jobs:
+  selenium_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.16.0'  # Use the Node.js version you need
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install libnss3-dev
+          npm install chromedriver@116
+          npm install -g mocha mochawesome
+          npm install
+          npm install selenium-webdriver
+          sudo apt-get update && sudo apt-get install -y wget gnupg
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome-archive-keyring.gpg && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome-archive-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list && sudo apt-get update && sudo apt-get install -y google-chrome-stable
+
+      - name: Start Selenium Server
+        run: docker run -d -p 4444:4444 --name selenium-container selenium/standalone-chrome:115.0
+
+      - name: Run Selenium Tests
+        run: mocha Test/**/*.test.js
+
+      - name: Archive Test Results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: TestResults
+          path: TestResults/NormalExecution
