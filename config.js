@@ -12,5 +12,5 @@ module.exports = {
     browser: ['chrome'],
 
     /** Available environments settings: [local, grid, cicd] */
-    environment: ['local']
+    environment: 'cicd'
 }
