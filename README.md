@@ -1,13 +1,9 @@
 # AutomationTestingPlayground
 
-This project is an approach to automate testing in web application by usiing popular framework like Selenium, Mocha & Chai.
+The **Automated Testing** for Web Applications is a comprehensive quality assurance project aimed at enhancing the reliability and stability of web-based software systems. Leveraging the power of Selenium, Mocha & Chai, this project is designed to automate the testing process, ensuring consistent and efficient evaluation of web applications.
 
-The design pattern which was followed is Page Object Model that is a popular design pattern in automation testing and commonly used to achive the following benefits :
-- Modular and Maintainable Code
-- Improved Code Readability
-- Enhanced Collaboration
-- Reduced Redundancy
-- Scalability
+# Design Pattern
+The Page Object Model (POM) is a widely adopted design pattern in automated software testing, specifically for web applications. It provides a **structured** and **organized** approach to test automation by separating the test code from the elements and actions on web pages. The primary goal of the Page Object Model is to enhance test **maintainability**, **reusability**, and **readability**, thereby improving the overall **efficiency** of automated testing efforts.
   
 # Capabilities
 - Run test in Selenium Grid
@@ -19,7 +15,7 @@ The design pattern which was followed is Page Object Model that is a popular des
 # Required Actions & Settings
 1) Download and install the required browsers ([Google Chrome](https://googlechromelabs.github.io/chrome-for-testing/), [Firefox](https://www.mozilla.org/en-US/firefox/new/), [Microsoft Edge](https://www.microsoft.com/en-us/edge/download?form=MA13FJ) )
 2) Downolad the require browser drivers ([Google Chrome](https://googlechromelabs.github.io/chrome-for-testing/), [Firefox](https://github.com/mozilla/geckodriver/releases), [Microsoft Edge](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/) )
-3) To run successfully local test must add in Page.js file your path to driver and browser executables for all browsers Chrome, Firefox, Edge.
+3) To run tests successfully local must add in Page.js file your path to driver and browser executables for all browsers Chrome, Firefox, Edge.
 - `ADD YOUR PATH TO (BROWSER) DRIVER EXECUTABLE` : Path to driver executable.
 - `ADD YOUR PATH TO (BROWSER) EXECUTABLE` : Path to browser executable.
 ```javascript
@@ -51,15 +47,19 @@ The design pattern which was followed is Page Object Model that is a popular des
 
 In `config.js` file you can modify the configuration of the project :
 - `timeoutTest` : Change the timeout of test in milliseconds 
-- `commandsTimeout` : Chnge the timeout of command execution 
+- `commandsTimeout` : Change the timeout of command execution 
 - `browser` : Specify the browsers for test (`chrome`,  `MicrosoftEdge`,  `firefox`)
+-  `environment` : Specify the environment for test to run :
+   - `local` : Tests will run locally to your computer.
+   - `grid` : Tests will run in Selenium Grid.
+   - `cicd` : Tests will run to your CI CD (must set this settings when you are ready to push in github)
 
 # Run Tests
 
 In `package.json` they have specify execution scripts :
-- `test-serial`
-- `test-parallel`
-- `test-mochawesome`
-- `test-parallel-mochawesome`
+- `test-serial` : Run tests in serial mode.
+- `test-parallel` : Run tests in parallel mode.
+- `test-mochawesome` : Run tests in serial mode and save a report file to `TestResults/NormalExecution`.
+- `test-parallel-mochawesome` : Run tests in parallel mode and save a report file to `TestResults/ParallelExecution`.
 
 
