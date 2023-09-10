@@ -9,5 +9,8 @@ module.exports = {
     commandsTimeout: 40000,
 
     /** Available browsers for test execution: [chrome, MicrosoftEdge, firefox] */
-    browser: ['chrome']
+    browser: ['chrome'],
+
+    /** Available environments settings: [local, grid, cicd] */
+    environment: ['local']
 }

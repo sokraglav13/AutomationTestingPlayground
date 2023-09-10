@@ -1,3 +1,5 @@
+const { environment } = require("../config");
+
 module.exports = {
     sampleAppDict: {
         sampleAppTitlePage: "Sample App",
@@ -82,5 +84,10 @@ module.exports = {
     },
     scrollbarsDict: {
         scrollbarsTitlePage: "Scrollbars"
+    },
+    environments: {
+        local: "local",
+        grid: "grid",
+        cicd: "cicd"
     }
 };
