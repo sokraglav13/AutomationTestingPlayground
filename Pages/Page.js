@@ -1,6 +1,6 @@
 const {Builder, until, Capabilities, Key} = require("selenium-webdriver");
 const {commandsTimeout, environment} = require("../config");
-const {environments} = require("./dictionary")
+const {environments,browsers} = require("./dictionary")
 class Page{
     /**
      * Construct Webdriver instance for specific browser.
@@ -9,21 +9,21 @@ class Page{
     constructor(browser) {
         // -------------------Local execution settings-----------------
         if(environment === environments.local){
-            if(browser === "chrome"){
+            if(browser === browsers.chrome){
                 const pathToChromeDriver = 'ADD YOUR PATH TO CHROME DRIVER EXECUTABLE'
                 const pathToChromeExecutable = 'ADD YOUR PATH TO CHROME EXECUTABLE'
                 const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
                 const options = new Options().setChromeBinaryPath(pathToChromeExecutable);
                 const service = new ServiceBuilder(pathToChromeDriver);
                 this.driver = new Builder().forBrowser(browser).setChromeService(service).setChromeOptions(options).build();
-            }else if (browser === "firefox"){
+            }else if (browser === browsers.firefox){
                 const pathToFirefoxDriver = 'ADD YOUR PATH TO FIREFOX DRIVER EXECUTABLE'
                 const pathToFirefoxExecutable = 'ADD YOUR PATH TO FIREFOX EXECUTABLE';
                 const {Options,ServiceBuilder} = require("selenium-webdriver/firefox");
                 const options = new Options().setBinary(pathToFirefoxExecutable);
                 const service = new ServiceBuilder(pathToFirefoxDriver)
                 this.driver = new Builder().forBrowser(browser).setFirefoxService(service).setFirefoxOptions(options).build();
-            }else if(browser === "MicrosoftEdge") {
+            }else if(browser === browsers.edge) {
                 const pathToMicrosoftEdgeDriver = 'ADD YOUR PATH TO MICROSOFT EDGE DRIVER EXECUTABLE';
                 const pathToMicrosoftEdgeExecutable = 'ADD YOUR PATH TO MICROSOFT EDGE EXECUTABLE';
                 const {Options,ServiceBuilder} = require("selenium-webdriver/edge");

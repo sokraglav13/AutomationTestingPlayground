@@ -89,5 +89,10 @@ module.exports = {
         local: "local",
         grid: "grid",
         cicd: "cicd"
+    },
+    browsers: {
+        chrome: "chrome",
+        firefox: "firefox",
+        edge: "MicrosoftEdge"
     }
 };
