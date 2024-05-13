@@ -25,8 +25,8 @@ class Progressbar extends Page {
                 const style = await progressBar.getAttribute("aria-valuenow");
                 if (Number(style) === 75)
                     return Number(style);
-            } catch (StaleElementException) {
-                return true;
+            } catch (e) {
+                return e;
             }
         }
     }

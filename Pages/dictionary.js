@@ -1,5 +1,3 @@
-const { environment } = require("../config");
-
 module.exports = {
     sampleAppDict: {
         sampleAppTitlePage: "Sample App",

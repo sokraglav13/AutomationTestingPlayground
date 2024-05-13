@@ -1,6 +1,5 @@
-const {By, Builder} = require("selenium-webdriver");
+const {By} = require("selenium-webdriver");
 const Page = require("../Page");
-const {dynamicTableDict} = require("../dictionary");
 
 const dynamicTableElements = {
     dynamicTableLink: By.css("a[href='/dynamictable']"),
@@ -29,9 +28,7 @@ class DynamicTable extends Page {
                 let appText = await appCell.getText();
                 if (appText === "Chrome") {
                     let appCell = await this.findElement(By.xpath(`(//div[@role='row'])[${i}]//span[contains(text(),'%')]`));
-                    let appText = await appCell.getText();
-                    return appText;
-                    break;
+                    return await appCell.getText();
                 }
             }
         }

@@ -1,6 +1,5 @@
-const {By, Builder} = require("selenium-webdriver");
+const {By} = require("selenium-webdriver");
 const Page = require("../Page");
-const {dynamicIDDict} = require("../dictionary");
 
 const dynamicIDElements = {
     dynamicIDLink: By.css("div:nth-of-type(1) > div:nth-of-type(1) > h3 > a"),

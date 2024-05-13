@@ -1,5 +1,5 @@
-const {Builder, until, Capabilities, Key} = require("selenium-webdriver");
-const {commandsTimeout, environment} = require("../config");
+const {Builder, until, Capabilities} = require("selenium-webdriver");
+const {commandsTimeout, environment,pathToChrome,pathToEdge,pathToFirefox,seleniumGridServerURL} = require("../config");
 const {environments,browsers} = require("./dictionary")
 class Page{
     /**
@@ -10,22 +10,22 @@ class Page{
         // -------------------Local execution settings-----------------
         if(environment === environments.local){
             if(browser === browsers.chrome){
-                const pathToChromeDriver = 'ADD YOUR PATH TO CHROME DRIVER EXECUTABLE'
-                const pathToChromeExecutable = 'ADD YOUR PATH TO CHROME EXECUTABLE'
+                const pathToChromeDriver = pathToChrome.DRIVER_EXECUTABLE
+                const pathToChromeExecutable = pathToChrome.EXECUTABLE
                 const {Options,ServiceBuilder} = require("selenium-webdriver/chrome");
                 const options = new Options().setChromeBinaryPath(pathToChromeExecutable);
                 const service = new ServiceBuilder(pathToChromeDriver);
                 this.driver = new Builder().forBrowser(browser).setChromeService(service).setChromeOptions(options).build();
             }else if (browser === browsers.firefox){
-                const pathToFirefoxDriver = 'ADD YOUR PATH TO FIREFOX DRIVER EXECUTABLE'
-                const pathToFirefoxExecutable = 'ADD YOUR PATH TO FIREFOX EXECUTABLE';
+                const pathToFirefoxDriver = pathToFirefox.DRIVER_EXECUTABLE
+                const pathToFirefoxExecutable = pathToFirefox.EXECUTABLE;
                 const {Options,ServiceBuilder} = require("selenium-webdriver/firefox");
                 const options = new Options().setBinary(pathToFirefoxExecutable);
                 const service = new ServiceBuilder(pathToFirefoxDriver)
                 this.driver = new Builder().forBrowser(browser).setFirefoxService(service).setFirefoxOptions(options).build();
             }else if(browser === browsers.edge) {
-                const pathToMicrosoftEdgeDriver = 'ADD YOUR PATH TO MICROSOFT EDGE DRIVER EXECUTABLE';
-                const pathToMicrosoftEdgeExecutable = 'ADD YOUR PATH TO MICROSOFT EDGE EXECUTABLE';
+                const pathToMicrosoftEdgeDriver = pathToEdge.DRIVER_EXECUTABLE;
+                const pathToMicrosoftEdgeExecutable = pathToEdge.EXECUTABLE;
                 const {Options,ServiceBuilder} = require("selenium-webdriver/edge");
                 const options = new Options().setEdgeChromiumBinaryPath(pathToMicrosoftEdgeExecutable);
                 const service = new ServiceBuilder(pathToMicrosoftEdgeDriver);
@@ -36,20 +36,20 @@ class Page{
             const {Options} =require(`selenium-webdriver/${browser}`)
             const capabilities = Capabilities.chrome();
             const chromeOptions = new Options();
-            chromeOptions.addArguments('--headless');
-            chromeOptions.addArguments('--no-sandbox')
-            chromeOptions.addArguments('--disable-dev-shm-usage')
+            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--no-sandbox")
+            chromeOptions.addArguments("--disable-dev-shm-usage")
             chromeOptions.addArguments("--window-size=1920,1080")
-            this.driver = new Builder().usingServer('http://localhost:4444') // replace with your Selenium hub URL
+            this.driver = new Builder().usingServer(seleniumGridServerURL) // replace with your Selenium hub URL
                 .withCapabilities(capabilities).build();
         // -----------------------CI CD settings----------------------
         }else if(environment === environments.cicd){
             const {Options} =require(`selenium-webdriver/${browser}`)
             const capabilities = Capabilities.chrome();
             const chromeOptions = new Options().setChromeBinaryPath("usr/bin/google-chrome-stable");
-            chromeOptions.addArguments('--headless');
-            chromeOptions.addArguments('--no-sandbox')
-            chromeOptions.addArguments('--disable-dev-shm-usage')
+            chromeOptions.addArguments("--headless");
+            chromeOptions.addArguments("--no-sandbox")
+            chromeOptions.addArguments("--disable-dev-shm-usage")
             chromeOptions.addArguments("--window-size=1920,1080")
             capabilities.merge(chromeOptions)
             this.driver = new Builder().forBrowser(browser).withCapabilities(capabilities).build();

@@ -1,6 +1,5 @@
-const {By, Builder} = require("selenium-webdriver");
+const {By} = require("selenium-webdriver");
 const Page = require("../Page");
-const {sampleAppDict} = require("../dictionary");
 
 const sampleAppElements = {
     title: By.css("div[class='container'] h3"),

@@ -1,6 +1,5 @@
-const {By, Builder} = require("selenium-webdriver");
+const {By} = require("selenium-webdriver");
 const Page = require("../Page");
-const {mouseOverDict} = require("../dictionary");
 
 const mouseOverElements = {
     mouseOverLink: By.css("a[href='/mouseover']"),

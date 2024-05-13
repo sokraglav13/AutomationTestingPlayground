@@ -1,6 +1,5 @@
-const {By, Builder} = require("selenium-webdriver");
+const {By} = require("selenium-webdriver");
 const Page = require("../Page");
-const {clickDict} = require("../dictionary");
 
 const clickElements = {
     clickLink: By.css("div:nth-of-type(2) > div:nth-of-type(3) > h3 > a"),
